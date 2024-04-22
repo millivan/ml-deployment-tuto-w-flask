@@ -46,12 +46,12 @@ def predict():
     )
     diabetes_prediction = model.predict_proba(setup_df)
     output = "{0:.{1}f}".format(diabetes_prediction[0][1], 2)
-    output = str(float(output) * 100) + "%"
+    output = float(output)
 
-    if output > str(0.5):
-        return render_template("result.html", pred=f"Yes")
+    if output > 0.5:
+        return render_template("result.html", pred="Yes")
     else:
-        return render_template("result.html", pred=f"No")
+        return render_template("result.html", pred="No")
 
 
 if __name__ == "__main__":
